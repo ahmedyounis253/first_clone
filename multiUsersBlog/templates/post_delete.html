@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+
+{% block body %}
+{% if request.user == post.author  or  request.user.is_superuser %}
+
+<p> are you sure you want to  delete this post ?! </p>
+
+
+<form  method="post">
+    {% csrf_token %}
+
+
+<input type="submit" value='delete'>
+
+
+
+
+
+</form>
+<a href='/post/{{post.id}}'"> cancel </a> 
+
+
+
+
+{% else %}
+
+<h1> sorry you can't complete this permision </h1>
+<a href='/post/{{post.id}}'"> go back  </a> 
+{% endif %}
+
+
+{% endblock %}

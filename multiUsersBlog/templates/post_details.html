@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+
+{% block body %}
+
+
+<h1> all posts </h1>
+
+<h1>
+{{post.title}}
+</h1>
+<p>
+{{post.text}}
+</p>
+auther: {{post.author}}
+<p>
+   published : {{post.published_date}}
+</p>
+{% if request.user == post.author  or  request.user.is_superuser %}
+
+<p> created: {{post.create_time}}</p>
+
+<button onclick="window.location='/post/{{post.id}}/publish'">publish</button>
+
+<button onclick="window.location='/post/{{post.id}}/update'">edit</button>
+<button onclick="window.location='/post/{{post.id}}/delete/'" > delete</button>
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
