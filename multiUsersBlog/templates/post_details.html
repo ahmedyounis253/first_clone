@@ -1,35 +1,51 @@
 {% extends 'main.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/post_details.css' %}">
 
+{% endblock  %}
 {% block body %}
 
-
-<h1> all posts </h1>
-
-<h1>
+{% if post.author != request.user and post.published_date == None  %}
+<h1 class='posttitle '> sorry not found </h1>
+{% else %}
+<h1 class="posttitle "  >
 {{post.title}}
 </h1>
-<p>
+<div id='middle_column'>
+<p class=" postcontent " >
 {{post.text}}
 </p>
-auther: {{post.author}}
-<p>
-   published : {{post.published_date}}
-</p>
+</div>
+<div class="postinfo">
+<p> author: {{post.author}} </p>
 {% if request.user == post.author  or  request.user.is_superuser %}
 
 <p> created: {{post.create_time}}</p>
+{% endif %}
 
-<button onclick="window.location='/post/{{post.id}}/publish'">publish</button>
+<p>
+   published : {{post.published_date}}
+</p>
 
-<button onclick="window.location='/post/{{post.id}}/update'">edit</button>
-<button onclick="window.location='/post/{{post.id}}/delete/'" > delete</button>
+</div>
+{% if request.user == post.author  or  request.user.is_superuser %}
 
+<div class="btn-actions " >
+   {% if post.published_date == None %}
+<button onclick="window.location='/post/{{post.id}}/publish'" class="single-btn  btn btn-primary ">publish</button>
+{% else %} 
+<button onclick="window.location='/post/{{post.id}}/unpublish'" class="single-btn  btn btn-primary ">unpublish</button>
+{% endif %}
+<button onclick="window.location='/post/{{post.id}}/update'" class="single-btn btn btn-secondary">edit</button>
+<button onclick="window.location='/post/{{post.id}}/delete/'" class="single-btn btn btn-danger"> delete</button>
+</div>
 {% endif %}
 
 
 
 
-
+{% endif %}
 
 
 

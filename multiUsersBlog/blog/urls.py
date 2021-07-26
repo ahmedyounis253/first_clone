@@ -12,6 +12,7 @@ urlpatterns=[
     path('post/<int:pk>', views.PostDetials.as_view(),name='postdetails'),
     path('posts/draft/', views.draftPost.as_view(),name='drafts'),
     path('post/<int:pk>/publish',views.publishPost,name='publishPost'),
+    path('post/<int:pk>/unpublish',views.unpublishPost,name='unpublishPost'),
     ###################################  comments  ###############################
     path('post/<int:pk>/comment',views.add_comment,name='addComment'),
     path('post/<int:pk>/comment/approve',views.approve_comment,name='addComment'),

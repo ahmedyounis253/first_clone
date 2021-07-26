@@ -1,6 +1,16 @@
-form {
-    background-color: rgb(1, 243, 211);
+
+.bigbrand{
+    font-size: 2em;
+    margin-top: 0ch;
+    margin-bottom: 0;
+    font-family: 'Zen Tokyo Zoo', cursive;
 }
-.justify-content-end{
-    margin-right: ($spacer * 3.5) !important;
-  }
+
+
+
+
+
+.centerstage{
+    margin-left: auto;
+    margin-right: auto;
+}

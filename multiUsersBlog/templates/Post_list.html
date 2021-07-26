@@ -1,19 +1,28 @@
     {% extends 'main.html' %}
 
 {% load static  %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/post_list.css' %}">
 
+{% endblock  %}
 
 {% block body %}
 
+<div class="centerstage">
 
-<h1> all posts </h1>
+      <h1 class='align-baseline' style="margin-left:30px; margin-top: 5 0px;"> {% if request.path == '/posts' %} All Tech Posts {% else %} Drafts {%  endif %} </h1>
+  
+
+
+</table>
+<div class="container">
 {% for post in post_list %}
 
 
 
 
 
-<div class="container">
+
     <div class="row">
         <div class="col-md-8">
             <div class="media g-mb-30 media-comment">
@@ -42,11 +51,12 @@
     
         
     </div>
-    </div>
+
     
 
 
     {% endfor %}
 
-
-{% endblock %}
+  </div>
+</div>
+  {% endblock %}

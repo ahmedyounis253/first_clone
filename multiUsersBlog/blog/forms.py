@@ -7,8 +7,8 @@ class PostForm(forms.ModelForm):
         model=models.Post
         fields=['title','text']
         widgets={
-            'title':forms.TextInput(attrs={'class':'textinputclass'}),
-            'text':forms.Textarea(attrs={'class':'editable medium-editor-texterea post-content'},)
+            'title':forms.TextInput(attrs={'class':'textinputclass form-control  col-xs-2' ,'aria-label':"Small", 'aria-describedby':"inputGroup-sizing-sm"}),
+            'text':forms.Textarea(attrs={'class':'editable medium-editor-texterea post-content form-control col-sm ' ,'aria-label':"Small", 'id':"exampleFormControlTextarea1" , 'rows':"3"},)
         }
 class CommentForm(forms.ModelForm):
     class Meta():

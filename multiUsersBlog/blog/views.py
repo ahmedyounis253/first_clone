@@ -41,10 +41,16 @@ class draftPost(LoginRequiredMixin,ListView):
         return models.Post.objects.filter(published_date__isnull=True, author=self.request.user).order_by('-create_time')
     template_name="post_list.html"
     model=models.Post
-
+@login_required
 def publishPost(request,pk):
     post=get_object_or_404(models.Post,pk=pk)
     post.publish()
+    return redirect('blog:postdetails',pk=pk)
+@login_required
+def unpublishPost(request,pk):
+    post=get_object_or_404(models.Post,pk=pk)
+    post.published_date=None
+    post.save()
     return redirect('blog:postdetails',pk=pk)
 class PostDetials(LoginRequiredMixin,DetailView):
     model=models.Post
